@@ -1,0 +1,63 @@
+<ion-view view-title="Profile">
+    <ion-content class="padding" ng-controller="ProfileCtrl as profileCtrl">
+        <h3 id="profile-search-header" ng-hide="profileCtrl.isFetched">Search for the desired user</h1>
+            <form ng-submit="profileCtrl.getUserProfile()" ng-hide="profileCtrl.isFetched" novalidate>
+                <div class="list list-inset">
+                    <label class="item item-input">
+                        <i class="icon ion-search placeholder-icon"></i>
+                        <input type="text" id="userProfileInput" class="form-control" placeholder="Write the user's screen name" required/>
+                    </label>
+                </div>
+            </form>
+            <div id="user-profile" ng-show="profileCtrl.isFetched">
+                <div class="user-main">
+                    <div class="profile-wrapper">
+                        <div id="profileImg">
+                            <img src="{{profileCtrl.profile.profileImageUrl}}" alt="Profile Picture" />
+                        </div>
+                    </div>
+                    <span class="profile-username">{{profileCtrl.profile.userName}}<code>#{{profileCtrl.profile.userId}}</code></span>
+                    <div class="profile-screenName">
+                        <a href="https://twitter.com/{{profileCtrl.profile.screenName}}">@{{profileCtrl.profile.screenName}}</a>
+
+                    </div>
+                    <p class="profile-bio">{{profileCtrl.profile.description}}</p>
+                    <span class="profile-location">Location: {{profileCtrl.profile.location}}</span>
+                </div>
+                <div class="profile-stats">
+                    <div class="profile-stat">
+                        <div class="profile-stat-name">
+                            Tweets
+                        </div>
+                        <span class="profile-stat-count">
+                {{profileCtrl.profile.tweetCount}}
+            </span>
+                    </div>
+                    <div class="profile-stat">
+                        <div class="profile-stat-name">
+                            Following
+                        </div>
+                        <span class="profile-stat-count">
+                {{profileCtrl.profile.friendsCount}}
+            </span>
+                    </div>
+                    <div class="profile-stat">
+                        <div class="profile-stat-name">
+                            Followers
+                        </div>
+                        <span class="profile-stat-count">
+              {{profileCtrl.profile.followersCount}}
+            </span>
+                    </div>
+                    <div class="profile-stat">
+                        <div class="profile-stat-name">
+                            Favorites
+                        </div>
+                        <span class="profile-stat-count">
+              {{profileCtrl.profile.favoritesCount}}
+            </span>
+                    </div>
+                </div>
+            </div>
+    </ion-content>
+</ion-view>
